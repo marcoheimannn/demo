@@ -1,0 +1,35 @@
+name: Compile TikZ diagram
+
+on:
+  push:
+    paths:
+      - 'diagram.tex'
+      - '.github/workflows/compile-diagram.yml'
+  pull_request:
+    paths:
+      - 'diagram.tex'
+      - '.github/workflows/compile-diagram.yml'
+  workflow_dispatch:
+
+jobs:
+  build-diagram:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compile diagram.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            diagram.tex
+            diagram_auditeo.tex
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagram-pdf
+          path: |
+            diagram.pdf
+            diagram_auditeo.pdf
