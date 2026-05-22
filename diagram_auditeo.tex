@@ -1,0 +1,61 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,line cap=round,line join=round]
+
+% Colors
+\definecolor{boxpink}{RGB}{210,40,120}
+\definecolor{arrowblue}{RGB}{40,170,255}
+
+% Text styles
+\tikzset{
+  boxlabel/.style={font=\sffamily\bfseries\large,align=center},
+  bodytext/.style={font=\sffamily\scriptsize,align=left,text width=5.1cm}
+}
+
+% Left tall box
+\draw[draw=boxpink,line width=1.2pt] (0,0) rectangle (1.1,4.2);
+
+% Large middle box
+\draw[draw=boxpink,line width=1.2pt] (2.1,0) rectangle (7.7,4.2);
+
+% Small inner middle box
+\draw[draw=boxpink,line width=1.2pt] (4.25,1.75) rectangle (5.15,2.95);
+
+% Right box
+\draw[draw=boxpink,line width=1.2pt] (8.85,1.55) rectangle (10.05,3.15);
+
+% Four horizontal arrows from left box to middle box
+\foreach \yy in {3.35,2.8,2.25,1.1} {
+  \draw[draw=arrowblue,line width=0.9pt,->] (0.9,\yy) -- (2.35,\yy);
+}
+
+% Five converging arrows inside middle box toward inner box
+\draw[draw=arrowblue,line width=0.9pt,->] (2.85,3.35) -- (4.18,2.58);
+\draw[draw=arrowblue,line width=0.9pt,->] (2.85,2.85) -- (4.18,2.42);
+\draw[draw=arrowblue,line width=0.9pt,->] (2.85,2.45) -- (4.18,2.25);
+\draw[draw=arrowblue,line width=0.9pt,->] (2.85,2.05) -- (4.18,2.08);
+\draw[draw=arrowblue,line width=0.9pt,->] (2.85,1.15) -- (4.18,1.92);
+
+% Arrow from inner box to right side of middle box
+\draw[draw=arrowblue,line width=0.9pt,->] (5.0,2.35) -- (6.55,2.35);
+
+% Arrow from middle box to right box
+\draw[draw=arrowblue,line width=0.9pt,->] (6.9,2.35) -- (9.25,2.35);
+
+% Box titles
+\node[boxlabel,rotate=90] at (0.55,2.1) {AUDITEO};
+\node[boxlabel] at (4.9,3.75) {Day-to-day management};
+\node[boxlabel] at (4.7,2.35) {SMEs \\ VSEs};
+\node[boxlabel] at (9.45,2.35) {Transformation};
+
+% Descriptive text below
+\node[bodytext] at (4.9,-0.95) {AUDITEO (4 partners, 25 employees, in the AURA region as well as in France) advises very small businesses and SMEs. It assists companies in their day-to-day management (accounting, tax, employment and performance management).\\[-1mm]
+$\bullet$ It also provides support in managing carbon footprints, including the calculation of CO\textsubscript{2} emissions.\\[-1mm]
+$\bullet$ It provides support in developing extra-financial reporting and implementing a plan to improve extra-financial performance (social, societal and environmental performance).\\[-1mm]
+$\bullet$ It provides support for management transformation.\\[-1mm]
+$\bullet$ It does not provide advice on achieving mission-driven status.};
+
+\end{tikzpicture}
+\end{document}
